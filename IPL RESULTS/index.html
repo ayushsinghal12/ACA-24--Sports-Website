@@ -1,38 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="navbar">
-        <a href="../index.html">HOME</a>
-        <a href="../TIMELINE/index.html">TIMELINE</a>
-        <a href="#">IPL RESULTS</a>
-      </div>
-      <div class="container">
-        <h1>Choose a year from the list and click on submit to show the IPL results of that year</h1>
-        <form id="form">
-        <select name="dropdown" id="dropdown" required>
-          <option disabled selected value="">--choose</option>
-          <option value="2020">2020</option>
-          <option value="2019">2019</option>
-          <option value="2018">2018</option>
-          <option value="2017">2017</option>
-          <option value="2016">2016</option>
-          <option value="2015">2015</option>
-          <option value="2014">2014</option>
-          <option value="2013">2013</option>
-          <option value="2012">2012</option>
-          <option value="2011">2011</option>
-          <option value="2010">2010</option>
-          <option value="2009">2009</option>
-          <option value="2008">2008</option>
-        </select>
-        <input type="submit">
-        <h2 id="result"></h2>
-        </form>
-      </div>
-      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
-      <script src="app.js"></script>
-</body>
-</html>
+const firebaseConfig = {
+  apiKey: "AIzaSyBMPl_eHD5FO4voBqrY9v507MW9zGKqiaQ",
+  authDomain: "ipl-results-cffab.firebaseapp.com",
+  databaseURL: "https://ipl-results-cffab-default-rtdb.firebaseio.com",
+  projectId: "ipl-results-cffab",
+  storageBucket: "ipl-results-cffab.appspot.com",
+  messagingSenderId: "550824914472",
+  appId: "1:550824914472:web:e8427641490c28ce274f1d"
+};
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  var UserInputRef=firebase.database().ref('User Inputs')
+
+  document.getElementById('form').addEventListener('submit', submitForm)
+  
+  function submitForm(e) {
+    e.preventDefault()
+    var year=document.getElementById('dropdown').value
+    showResults(year)
+    saveData(year)
+  }
+  
+  function saveData(year) {
+    var newUserSubmission = UserInputRef.push()
+    var submission = {
+      year:year
+    }
+    newUserSubmission.set(submission)
+  }
+  
+  function showResults(year) {
+    var yearRef = firebase.database().ref(year)
+    yearRef.on('value', function (i) {
+      var result = i.val()
+      document.getElementById('result').innerHTML = "Winner: " + "<div>" + result + "</div>"
+    }
+    )
+  }
