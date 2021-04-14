@@ -28,7 +28,7 @@ body{
   .navbar a:hover{color:#7B1FA2;background:white}
   .container{
     height:30vw;
-    margin-top: 10vw;
+    margin-top: 5vw;
   }
   .container h1{
     font-size: 2.5vw;
@@ -46,11 +46,19 @@ body{
   }
   .container input[type=submit]{
     display: block;
-    margin: 25vw auto 0px auto;
+    margin: 24vw auto 0px auto;
     border: none;
     background: black;
     color:red;
     text-transform: uppercase;
     padding: 0.5vw;
     font-size: 1vw;
+  }
+  #result{
+    color:white;
+    font-size: 1.5vw;
+  }
+  #result div{
+    color:lightblue;
+    font-size:2vw
   }
