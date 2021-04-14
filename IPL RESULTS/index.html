@@ -11,27 +11,28 @@
       </div>
       <div class="container">
         <h1>Choose a year from the list and click on submit to show the IPL results of that year</h1>
-        <form>
-        <select name="dropdown" required>
-          <option disabled selected>--choose</option>
-          <option value="20">2020</option>
-          <option value="19">2019</option>
-          <option value="18">2018</option>
-          <option value="17">2017</option>
-          <option value="16">2016</option>
-          <option value="15">2015</option>
-          <option value="14">2014</option>
-          <option value="13">2013</option>
-          <option value="12">2012</option>
-          <option value="11">2011</option>
-          <option value="10">2010</option>
-          <option value="09">2009</option>
-          <option value="08">2008</option>
+        <form id="form">
+        <select name="dropdown" id="dropdown" required>
+          <option disabled selected value="">--choose</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
         </select>
         <input type="submit">
+        <h2 id="result"></h2>
         </form>
       </div>
-      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
       <script src="app.js"></script>
 </body>
 </html>
